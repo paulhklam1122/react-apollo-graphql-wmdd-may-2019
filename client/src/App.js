@@ -14,7 +14,7 @@ const client = new ApolloClient({
 const App = () => {
   return (
     <ApolloProvider client={client}>
-      <div>
+      <div className='app'>
         <AddContact/>
         <Contacts />
       </div>

@@ -1,4 +1,5 @@
 import { gql } from 'apollo-server'
+import { find } from 'lodash'
 
 const contacts = [
   {
@@ -31,6 +32,7 @@ const typeDefs = gql`
 
   type Mutation {
     addContact(id: String!, firstName: String!, lastName: String!): Contact
+    updateContact(id: String!, firstName: String!, lastName: String!): Contact
   }
 `
 
@@ -47,6 +49,16 @@ const resolvers = {
       }
       contacts.push(newContact)
       return newContact
+    },
+    updateContact: (root, args) => {
+      const contact = find(contacts, { id: args.id })
+      if (!contact) {
+        throw new Error(`Couldn't find contact with id ${args.id}`)
+      }
+
+      contact.firstName = args.firstName
+      contact.lastName = args.lastName
+      return contact
     }
   }
 }

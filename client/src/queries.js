@@ -19,3 +19,13 @@ export const ADD_CONTACT = gql`
     }
   }
 `
+
+export const UPDATE_CONTACT = gql`
+  mutation UpdateContact($id: String!, $firstName: String!, $lastName: String!) {
+    updateContact(id: $id, firstName: $firstName, lastName: $lastName) {
+      id
+      firstName
+      lastName
+    }
+  }
+`
