@@ -2,6 +2,7 @@ import React from 'react'
 import { Query } from 'react-apollo'
 
 import { GET_CONTACTS } from './queries'
+import Contact from './Contact'
 
 const Contacts = () => (
   <Query query={GET_CONTACTS}>
@@ -12,7 +13,11 @@ const Contacts = () => (
       return (
         <ul>
           {data.contacts.map(({ id, firstName, lastName }) => (
-            <li key={id}>{firstName} {lastName}</li>
+            <Contact
+              id={id}
+              firstName={firstName}
+              lastName={lastName}
+            />
           ))}
         </ul>
       )

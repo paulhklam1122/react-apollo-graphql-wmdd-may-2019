@@ -28,11 +28,26 @@ const typeDefs = gql`
   type Query {
     contacts: [Contact]
   }
+
+  type Mutation {
+    addContact(id: String!, firstName: String!, lastName: String!): Contact
+  }
 `
 
 const resolvers = {
   Query: {
     contacts: () => contacts
+  },
+  Mutation: {
+    addContact: (root, args) => {
+      const newContact = {
+        id: args.id,
+        firstName: args.firstName,
+        lastName: args.lastName
+      }
+      contacts.push(newContact)
+      return newContact
+    }
   }
 }
 
