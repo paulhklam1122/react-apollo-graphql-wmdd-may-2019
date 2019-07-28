@@ -4,6 +4,8 @@ import { Query } from 'react-apollo'
 import { GET_CONTACTS } from './queries'
 import Contact from './Contact'
 
+import { List, Container } from '@material-ui/core'
+
 const Contacts = () => (
   <Query query={GET_CONTACTS}>
     {({ loading, error, data }) => {
@@ -13,11 +15,16 @@ const Contacts = () => (
       return (
         <ul>
           {data.contacts.map(({ id, firstName, lastName }) => (
-            <Contact
-              id={id}
-              firstName={firstName}
-              lastName={lastName}
-            />
+            <Container>
+              <List>
+                <Contact
+                  key={id}
+                  id={id}
+                  firstName={firstName}
+                  lastName={lastName}
+                />
+              </List>
+            </Container>
           ))}
         </ul>
       )

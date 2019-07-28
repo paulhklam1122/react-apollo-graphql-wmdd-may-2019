@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import UpdateContact from './UpdateContact'
 
+import { Button, ListItem, ListItemText } from '@material-ui/core'
+
+
 class Contact extends Component {
   state = {
     editMode: false,
@@ -20,15 +23,16 @@ class Contact extends Component {
     })
   }
 
-  handleCancelButtonClick = () => {
+  handleButtonClick = () => {
     this.setState({
-      editMode: false
+      editMode: !this.state.editMode
     })
   }
 
   render() {
-    const { id, firstName, lastName } = this.props
-    const { editMode } = this.state
+    const { editMode, id, firstName, lastName } = this.state
+    const fullName = `${firstName} ${lastName}`
+
     return (
       <div>
         {
@@ -38,15 +42,24 @@ class Contact extends Component {
               id={id}
               firstName={firstName}
               lastName={lastName}
+              onButtonClick={this.handleButtonClick}
               onInputChange={this.handleInputChange}
-              onCancelButtonClick={this.handleCancelButtonClick}
             />
             :
-            <li key={id}>
-              {firstName} {lastName}
-              <button onClick={this.handleEditButtonClick}>Edit</button>
-              <button>Delete</button>
-            </li>
+            <ListItem>
+              <ListItemText
+                primary={fullName}
+              />
+                {/* {firstName} {lastName} */}
+                <Button
+                  onClick={e => this.handleButtonClick()}
+                  variant='contained'
+                  style={{ margin: '5px' }}
+                >
+                  Edit
+                </Button>
+                <Button>Delete</Button>
+            </ListItem>
         }
       </div>
     )

@@ -5,6 +5,8 @@ import uuidv4 from 'uuid/v4'
 
 import { ADD_CONTACT, GET_CONTACTS } from './queries'
 
+import { Button, TextField} from '@material-ui/core'
+
 class AddContact extends Component {
   state = {
     firstName: '',
@@ -45,17 +47,32 @@ class AddContact extends Component {
               }
             })
           }}>
-            <input
+            <TextField
+              label='First Name'
               value={firstName}
-              placeholder='John'
-              onChange={e => this.setState({ firstName: e.target.value})}
+              placeholder='i.e. John'
+              onChange={e => this.setState({ firstName: e.target.value })}
+              margin='normal'
+              varian='outlined'
+              style={{ margin: '5px' }}
             />
-            <input
+            <TextField
+              label='Last Name'
               value={lastName}
-              placeholder='Doe'
-              onChange={e => this.setState({ lastName: e.target.value})}
+              placeholder='i.e. Smith'
+              onChange={e => this.setState({ lastName: e.target.value })}
+              margin='normal'
+              varian='outlined'
+              style={{ margin: '5px' }}
             />
-            <button type='submit'>Add Contact</button>
+            <Button
+              type='submit'
+              variant='contained'
+              color='primary'
+              style={{ margin: '5px' }}
+            >
+              Add Contact
+            </Button>
           </form>
         )}
       </Mutation>
