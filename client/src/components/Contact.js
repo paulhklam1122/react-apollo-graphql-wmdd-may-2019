@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import UpdateContact from './UpdateContact'
 
 import { Button, ListItem, ListItemText } from '@material-ui/core'
+import RemoveContact from './RemoveContact'
 
 
 class Contact extends Component {
   state = {
     editMode: false,
+    id: this.props.id || '',
     firstName: this.props.firstName || '',
     lastName: this.props.lastName || ''
   }
@@ -58,7 +60,11 @@ class Contact extends Component {
                 >
                   Edit
                 </Button>
-                <Button>Delete</Button>
+              <RemoveContact
+                id={id}
+                firstName={firstName}
+                lastName={lastName}
+              />
             </ListItem>
         }
       </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Query } from 'react-apollo'
 
-import { GET_CONTACTS } from './queries'
+import { GET_CONTACTS } from '../queries'
 import Contact from './Contact'
 
 import { List, Container } from '@material-ui/core'

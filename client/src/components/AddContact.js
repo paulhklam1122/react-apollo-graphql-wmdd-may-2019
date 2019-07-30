@@ -3,7 +3,7 @@ import { Mutation } from 'react-apollo'
 
 import uuidv4 from 'uuid/v4'
 
-import { ADD_CONTACT, GET_CONTACTS } from './queries'
+import { ADD_CONTACT, GET_CONTACTS } from '../queries'
 
 import { Button, TextField} from '@material-ui/core'
 

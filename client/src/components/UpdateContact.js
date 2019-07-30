@@ -1,7 +1,7 @@
 import React from 'react'
 import { Mutation } from 'react-apollo'
 
-import { UPDATE_CONTACT } from './queries'
+import { UPDATE_CONTACT } from '../queries'
 
 import { Button, TextField } from '@material-ui/core'
 
